@@ -36,22 +36,39 @@ You need some electronics
 
 # Setting up the parameters in Q-ground control 
 1: Connect the USB cable with PX4 and your PC. Open Q ground control. Update the latest firmware and choose the airframe.
+
 2: Do Accelerometer, magnetometer calibrations.
+
 3: Then calibrate the joystick. 
+
 4: Set Flight modes: Choose a button on RC and setup three modes (For me they are Position - Manual - Land). Choose the RC button that have three states top-mid-bottom
+
 5: Set emergency kill switch, arming switch and offboard switch, and RTL switch (use different on-off switches on your RC transmitter)
+
 6: Calibrate motors: Plug out the battery port first, press motor calibrate button and then connect the battery plug. 
+
 7: In motors section: See each motor can rotate according to the direction you want to, according to Airframe reference.
+
 8: Set up parameters for Telem2 port, because your PX4 will communicate with raspberry pi 4 through telem2 port and USB2TTL setup. 
+
 (Imp link: https://docs.px4.io/master/en/companion_computer/pixhawk_companion.html)
+
     >> MAV_1_CONFIG = TELEM 2 (MAV_1_CONFIG is often used to map the TELEM 2 port)
+    
     >> MAV_1_MODE = Onboard
+    
     >> SER_TEL2_BAUD = 921600 (921600 or higher recommended for applications like log streaming or FastRTPS)
+    
 9: Set up parameters for EKF2 fusion with vicon (Assume we are not using GPS and using vicon)
+
     >> EKF2_AID_MASK -> Tick mark only the fields "vision position fusion" and "vision yaw fusion" instead of GPS
+    
     >> EKF2_HGT_MODE set to "vision" instead of barometer
+    
     >> EKF2_EV_DELAY set to "50 ms". Technically, should be measured (follow instructions on px4 guide (https://docs.px4.io/master/en/ros/external_position_estimation.html)
+    
     >> EKF2_EVA_NOISE set to the minimum value (2.86 degrees in our case), ie you are saying that the vicon data is absolutely true
+    
     >> EKF2_EVP_NOISE set to the minimum value (0.01 meters in our case), same as above
 
 # Set up Telem2 port 
