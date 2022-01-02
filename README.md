@@ -82,4 +82,29 @@ https://gist.github.com/Jawad-RoboLearn/e409b64dec736c01c4dd1d4ecd2339fb
 Follow the detailed Gist, I have written
 https://gist.github.com/Jawad-RoboLearn/53a99356153530f61cf5f880487eb766
 
+# First check up 
+To see you can remotely ssh to raspberry pi 4 
+    >> ssh <computer-name>@<rasperry pi IP address>
 
+To see you can get the /mavros topics on raspberry pi 4 OR the communication between Raspi-PX4 on telem2 port works
+    Create a launch file
+    <launch>
+        <arg name="fcu_url" default="/dev/ttyUSB0"/>
+        <arg name="gcs_url" default="udp://:14556@127.0.0.1:14550" />
+        <arg name="tgt_system" default="1" />
+        <arg name="tgt_component" default="1" />
+        
+        <node name="mavros" pkg="mavros" type="mavros_node" output="screen">
+             <param name="fcu_url" value="$(arg fcu_url)" />
+             <param name="gcs_url" value="$(arg gcs_url)" />
+             <param name="target_system_id" value="$(arg tgt_system)" />
+             <param name="target_component_id" value="$(arg tgt_component)" />
+             <!-- enable heartbeat send and reduce timeout -->
+             <param name="conn_heartbeat" value="5.0" />
+             <param name="conn_timeout" value="5.0" />
+             <!-- automatically start mavlink on USB -->
+             <param name="startup_px4_usb_quirk" value="true" />
+    </node>
+    </launch>
+ 
+    
