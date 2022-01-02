@@ -4,21 +4,34 @@ This tutorial will cover the complete setup of drone, PX4-mavros based software 
 # Step 1: Drone Setup
 You need some electronics
 1: A drone mechanical frame with 4 motors and 4 propellers (2 propellers with CCW (R written on propeller) and 2 with CW (L written on propeller) suitable propeller type)
+
 2: 4 ESC's (Please check the motor max current rating before buying the ESC). Tip: My motor amperes at max thrust are 24A so I have used >30A ESC's. 
+
 3: Pixhawk 4 (PX4)
+
 4: Raspberry Pi 4
+
 5: Radio transmitter and receiver
+
 6: GPS provided with PX4 board
+
 7: FTDI USB2TTL (3.3v) chip and USB cable 
+
 8: A power distribution board that will give you 12 and 5 v channels
 
 # My Drone (For reference)
 1: QAV 250 type frame with 2 CCW / 2 CW propellers (Model: 5045) and 4 BLDC motors. (Tip: Your motors cummulative thrust will be > 2 x drone weight)
+
 2: ESCs 30A
+
 3: PX4, Raspberry pi 4
+
 4: Radio Link transmitter and R9DS receiver
+
 5: GPS provided by PX4
+
 6: FTDI chip easily available
+
 7: Power board 1: 12 V and 5V used for motor and raspberry pi 4. For PX4 I have used APM galvanometer voltage sensor power module APM PIX PX4 Power Module 3A BEC whose input 12 V is from the main power board 1. The power board 1 is connected with the battery. 
 
 # Setting up the parameters in Q-ground control 
